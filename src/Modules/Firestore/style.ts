@@ -16,7 +16,7 @@ const styles = (
       alignSelf: 'center',
       fontWeight: 'bold',
     },
-    AddBookButtonStyle: {
+    AddBookButtonStyle: {zIndex:1,
       position: 'absolute',
       bottom: height * 0.03,
       right: height * 0.03,

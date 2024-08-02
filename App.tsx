@@ -67,8 +67,8 @@ const Main = () => {
   return (
     <ScreenContextProvider>
       <PaperProvider>
-        {/* <App /> */}
-        <Firestore/>
+        <App />
+        {/* <Firestore/> */}
       </PaperProvider>
     </ScreenContextProvider>
   );

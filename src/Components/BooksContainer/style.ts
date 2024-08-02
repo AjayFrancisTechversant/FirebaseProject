@@ -12,7 +12,7 @@ const styles = (
   StyleSheet.create({
     commentsContainer: {
       backgroundColor: ColorPalette.lightOrange,
-      height: screenContext.isPortrait ? height * 0.75 : width * 0.55,
+      height: screenContext.isPortrait ? height * 0.65 : width * 0.4,
       elevation: 5,
       borderRadius: 20,
       margin: height * 0.025,

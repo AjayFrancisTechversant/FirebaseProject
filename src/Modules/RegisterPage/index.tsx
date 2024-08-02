@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState} from 'react';
+import auth from '@react-native-firebase/auth';
 import {TextInput} from 'react-native-paper';
 import StaticVariables from '../../Preferences/StaticVariables';
 import ColorPalette from '../../Assets/Themes/ColorPalette';
@@ -20,6 +21,18 @@ const RegisterPage: React.FC = () => {
     email: StaticVariables.EMPTY_STRING,
     password: StaticVariables.EMPTY_STRING,
   });
+
+
+  const handleRegister = () => {
+    auth()
+      .createUserWithEmailAndPassword(userData.email, userData.password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      });
+  };
   const screenContext = useScreenContext();
   const screenStyles = styles(
     screenContext.isPortrait ? screenContext.height : screenContext.width,
@@ -35,7 +48,7 @@ const RegisterPage: React.FC = () => {
       enabled={true}
       behavior="height"
       keyboardVerticalOffset={50}>
-      <ScrollView showsVerticalScrollIndicator={false} >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={screenStyles.heading}>Register</Text>
         <TextInput
           style={screenStyles.textInput}
@@ -60,7 +73,7 @@ const RegisterPage: React.FC = () => {
           outlineColor={ColorPalette.green}
           activeOutlineColor={ColorPalette.green}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleRegister}>
           <View style={screenStyles.button}>
             <Text style={screenStyles.buttonText}>Register</Text>
           </View>

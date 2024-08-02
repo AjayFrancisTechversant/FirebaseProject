@@ -2,6 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {useScreenContext} from '../../Contexts/ScreenContext';
 import styles from './style';
+import LogoutComponent from '../../Components/LogoutComponent';
 
 const HomeScreen = () => {
   const screenContext = useScreenContext();
@@ -23,6 +24,7 @@ const HomeScreen = () => {
         <Text>isPortrait:{screenContext.isPortrait ? 'true' : 'false'}</Text>
         <Text>isTablet:{screenContext.isTypeTablet ? 'true' : 'false'}</Text>
       </View>
+      <LogoutComponent/>
     </View>
   );
 };

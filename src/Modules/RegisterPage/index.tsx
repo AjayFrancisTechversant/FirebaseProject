@@ -1,10 +1,17 @@
-import {View, Text, Alert, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Alert,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+} from 'react-native';
 import React, {useState} from 'react';
 import {TextInput} from 'react-native-paper';
 import StaticVariables from '../../Preferences/StaticVariables';
 import ColorPalette from '../../Assets/Themes/ColorPalette';
 import {useNavigation} from '@react-navigation/native';
-import { useScreenContext } from '../../Contexts/ScreenContext';
+import {useScreenContext} from '../../Contexts/ScreenContext';
 import styles from './style';
 
 const RegisterPage: React.FC = () => {
@@ -23,7 +30,12 @@ const RegisterPage: React.FC = () => {
   );
 
   return (
-      <View style={screenStyles.container}>
+    <KeyboardAvoidingView
+      style={screenStyles.container}
+      enabled={true}
+      behavior="height"
+      keyboardVerticalOffset={50}>
+      <ScrollView showsVerticalScrollIndicator={false} >
         <Text style={screenStyles.heading}>Register</Text>
         <TextInput
           style={screenStyles.textInput}
@@ -48,7 +60,7 @@ const RegisterPage: React.FC = () => {
           outlineColor={ColorPalette.green}
           activeOutlineColor={ColorPalette.green}
         />
-        <TouchableOpacity >
+        <TouchableOpacity>
           <View style={screenStyles.button}>
             <Text style={screenStyles.buttonText}>Register</Text>
           </View>
@@ -60,7 +72,8 @@ const RegisterPage: React.FC = () => {
             <Text style={screenStyles.greenUnderlinetext}>Login</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -1,23 +1,18 @@
 import {StyleSheet} from 'react-native';
 import ColorPalette from '../../Assets/Themes/ColorPalette';
-import { ScreenContextType } from '../../Contexts/ScreenContext';
+import {ScreenContextType} from '../../Contexts/ScreenContext';
 
 const styles = (
-    height: number,
-    width: number,
-    isPortrait: boolean,
-    isTypeTablet: boolean,
-    screenContext: ScreenContextType,
-  ) =>
+  height: number,
+  width: number,
+  isPortrait: boolean,
+  isTypeTablet: boolean,
+  screenContext: ScreenContextType,
+) =>
   StyleSheet.create({
-    canvas: {
-      backgroundColor: 'white',
-      flex: 1,
-    },
     container: {
       flex: 1,
-      marginHorizontal: screenContext.isPortrait ? width * 0.1 : width * 0.3,
-      marginTop: height * 0.062,
+      padding: height * 0.03,
     },
     heading: {
       fontSize: 50,
@@ -25,6 +20,8 @@ const styles = (
     },
     textInput: {
       marginVertical: height * 0.0188,
+      width: isPortrait ? width * 0.8 : height * 0.5,
+      alignSelf: 'center',
     },
     button: {
       alignSelf: 'center',

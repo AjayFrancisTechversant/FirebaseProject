@@ -8,6 +8,7 @@ import {
 import {ScreenContextProvider} from './src/Contexts/ScreenContext';
 import AuthNativeStack from './src/Services/Navigation/AuthNativeStack';
 import HomeScreen from './src/Modules/HomeScreen';
+import {PaperProvider} from 'react-native-paper';
 
 type RootStackParamList = {
   authNativeStack: undefined;
@@ -19,7 +20,7 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaView style={{flex: 1}}>
       <NavigationContainer>
-        <RootNativeStack.Navigator >
+        <RootNativeStack.Navigator>
           <RootNativeStack.Screen
             name="authNativeStack"
             component={AuthNativeStack}
@@ -39,7 +40,9 @@ function App(): React.JSX.Element {
 const Main = () => {
   return (
     <ScreenContextProvider>
-      <App />
+      <PaperProvider>
+        <App />
+      </PaperProvider>
     </ScreenContextProvider>
   );
 };

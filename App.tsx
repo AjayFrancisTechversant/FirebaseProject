@@ -10,10 +10,12 @@ import {ScreenContextProvider} from './src/Contexts/ScreenContext';
 import AuthNativeStack from './src/Services/Navigation/AuthNativeStack';
 import HomeScreen from './src/Modules/HomeScreen';
 import {PaperProvider} from 'react-native-paper';
+import BottomTabStack from './src/Services/Navigation/BottomTabStack';
+import Firestore from './src/Modules/Firestore';
 
 type RootStackParamList = {
   authNativeStack: undefined;
-  homeScreen: undefined;
+  bottomTabStack: undefined;
 };
 
 const RootNativeStack = createNativeStackNavigator<RootStackParamList>();
@@ -47,8 +49,8 @@ function App(): React.JSX.Element {
               />
             ) : (
               <RootNativeStack.Screen
-                name="homeScreen"
-                component={HomeScreen}
+                name="bottomTabStack"
+                component={BottomTabStack}
                 options={{headerShown: false} as NativeStackNavigationOptions}
               />
             )}
@@ -65,7 +67,8 @@ const Main = () => {
   return (
     <ScreenContextProvider>
       <PaperProvider>
-        <App />
+        {/* <App /> */}
+        <Firestore/>
       </PaperProvider>
     </ScreenContextProvider>
   );

@@ -56,29 +56,29 @@ const Firestore = () => {
     screenContext.isTypeTablet,
     screenContext,
   );
-  const handleSearch = (e: string) => {
-    setSearchText(e);
+  const handleSearch = (text: string) => {
+    setSearchText(text);
+
     firestore()
       .collection(`users/${userId}/Books`)
-      .where('title', '==', `${searchText}`)
+      .where('title', '>=', text)
+      .where('title', '<=', text + '\uf8ff')
       .get()
-      .then(
-        querySnapshot => {
-          const searchedBooks: Booktype[] = [];
-          querySnapshot.forEach(i => {
-            const data = i.data();
-            searchedBooks.push({
-              id: i.id,
-              title: data.title,
-              desc: data.desc,
-            });
+      .then(querySnapshot => {
+        const searchedBooks: Booktype[] = [];
+        querySnapshot.forEach(doc => {
+          const data = doc.data();
+          searchedBooks.push({
+            id: doc.id,
+            title: data.title,
+            desc: data.desc,
           });
-          setSearchResultBooks(searchedBooks);
-        },
-        error => {
-          console.error('Error searching books: ', error);
-        },
-      );
+        });
+        setSearchResultBooks(searchedBooks);
+      })
+      .catch(error => {
+        console.error('Error searching books: ', error);
+      });
   };
 
   return (

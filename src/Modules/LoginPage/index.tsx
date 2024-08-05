@@ -47,7 +47,9 @@ const LoginPage: React.FC = () => {
       })
       .catch(error => {
         Alert.alert(error.message);
-      })
+        console.log(error);
+        
+      }).finally(()=>setGuestloginLoading(false))
   };
   const screenContext = useScreenContext();
   const screenStyles = styles(
